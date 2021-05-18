@@ -10,12 +10,16 @@ import java.util.Objects;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "vote")
-public class Vote {
+
+public class Vote implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer userId;
     private Integer postId;
+
+    public Vote() {
+    }
 
 
     public Vote(Integer id, Integer userId, Integer postId) {

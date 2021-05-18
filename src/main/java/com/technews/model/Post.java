@@ -13,7 +13,7 @@ import java.util.Objects;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "post")
 
-public class Post {
+public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -34,6 +34,9 @@ public class Post {
     private Date updatedAt = new Date();
     @OneToMany(mappedBy = "postId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
+
+    public Post() {
+    }
 
     public Post(Integer id, String title, String postUrl, int voteCount, Integer userId) {
         this.id = id;
